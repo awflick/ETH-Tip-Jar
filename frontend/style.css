@@ -1,0 +1,116 @@
+/* style.css */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Orbitron:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Rajdhani:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Audiowide&display=swap');
+
+:root {
+  --background: #0d0d0d;
+  --accent: #ff003c;
+  --text: #e0e0e0;
+  --muted: #888;
+  --input-bg: #1a1a1a;
+  --input-border: #333;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  background-color: var(--background);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+  max-width: 420px;
+  width: 90%;
+  padding: 2rem;
+  background-color: rgba(20, 20, 20, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 0, 60, 0.3);
+}
+
+h1 {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+
+button {
+  background-color: var(--accent);
+  color: white;
+  font-size: 1rem;
+  border: none;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border-radius: 6px;
+  width: 100%;
+  transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #e60036;
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+input {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.65rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--text);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+}
+
+#status {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+  min-height: 1.5em;
+}
+
+/* Mild Particle Noise */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  background-image: radial-gradient(var(--accent) 0.5px, transparent 0.5px);
+  background-size: 20px 20px;
+  opacity: 0.02;
+  z-index: 0;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  input,
+  button {
+    font-size: 0.95rem;
+  }
+}
