@@ -1,12 +1,12 @@
 # ETH Tip Jar
 
-A simple decentralized tip jar dApp built with Solidity, Ethers.js, and HTML/CSS. Users can connect their MetaMask wallet and send ETH tips along with a message. This project is deployed to the Sepolia testnet and styled with a modern cyberpunk/terminal-inspired UI.
+A simple decentralized tip jar dApp built with Solidity, Ethers.js, and HTML/CSS. Users can connect their MetaMask wallet and send **ETH or any ERC-20 token** tips along with a message. This project is deployed to the Sepolia testnet and styled with a modern cyberpunk/terminal-inspired UI.
 
 ---
 
 ## Live Demo
 
-👉 [**View Live on Netlify**](https://your-netlify-link.netlify.app)  
+👉 [**View Live on Netlify**](https://ethtipjar.netlify.app/)  
 *(Replace with your actual link after deployment)*
 
 ---
@@ -23,7 +23,9 @@ A simple decentralized tip jar dApp built with Solidity, Ethers.js, and HTML/CSS
 ## Features
 
 - Connect MetaMask wallet
-- Send ETH with a custom message
+- Send ETH **or ERC-20 tokens** with a custom message
+- Approves and sends LINK, USDC, WETH, USDT, DAI, and more
+- Dynamic dropdown for selecting supported tokens
 - Random funny feedback on each tip
 - Responsive design for mobile
 - Fully verified contract on Sepolia Etherscan
@@ -84,7 +86,7 @@ To test the frontend locally before hosting:
 3. In VS Code, **right-click `index.html`** (inside the `frontend` folder) and choose:  
    **“Open with Live Server”**
 4. Your default browser will open `http://127.0.0.1:5500/frontend/index.html` or similar.
-5. Connect your MetaMask wallet and start tipping in ETH!
+5. Connect your MetaMask wallet and start tipping in ETH or tokens!
 
 ---
 
@@ -118,7 +120,7 @@ These services are free and mobile-ready. Just push this project to GitHub and l
 - [x] MetaMask tip functionality  
 - [x] Custom tip messages  
 - [x] Cyberpunk design (CSS)  
-- [ ] Optional: Multi-token support (ERC-20)  
+- [x] Multi-token support (ERC-20)  
 - [ ] Optional: RainbowKit or Web3Modal UI  
 - [ ] Optional: Show live recent tips
 - [ ] Launch to mainnet!  
@@ -135,4 +137,3 @@ MIT — free to fork, remix, and build on
 
 Built by [@Adam Flick](https://github.com/awflick) as part of a Web3 development journey.  
 Design inspired by terminal aesthetics, cyberpunk culture, and modern UX.
-
