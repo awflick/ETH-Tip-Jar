@@ -34,7 +34,7 @@ lcov-report/
 logs/
 
 # Frontend build output (if using a bundler like Vite, Webpack, or Next.js)
-dist/
+!/frontend/dist/
 build/
 
 # Netlify deploy settings 
