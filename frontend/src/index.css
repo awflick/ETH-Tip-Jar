@@ -1,10 +1,19 @@
-/* style.css */
+/* index.css */
 
+/* ===============================
+   FONT IMPORTS
+   ===============================
+   Tech/monospace + cyberpunk vibes using multiple Google Fonts
+   (only one will be used at a time in different elements)
+*/
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Anton&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Orbitron:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Rajdhani:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Audiowide&display=swap');
 
+/* ===============================
+   CSS VARIABLES (Global Theme)
+   =============================== */
 :root {
   --background: #0d0d0d;
   --accent: #ff003c;
@@ -14,6 +23,11 @@
   --input-border: #333;
 }
 
+/* ===============================
+   BODY STYLING
+   ===============================
+   Dark mode layout, center-aligned content, stacked for mobile
+*/
 body {
   margin: 0;
   padding: 0;
@@ -23,19 +37,30 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
+/* ===============================
+   CONTAINER
+   ===============================
+   Main card with background, padding, shadow, and max-width
+*/
 .container {
   text-align: center;
-  max-width: 420px;
-  width: 90%;
-  padding: 2rem;
+  width: 100%;
+  max-width: 425px;
+  padding: 2rem 1rem;
+  margin: 0 auto;
   background-color: rgba(20, 20, 20, 0.95);
   border-radius: 12px;
   box-shadow: 0 0 30px rgba(255, 0, 60, 0.3);
+  box-sizing: border-box;
 }
 
+/* ===============================
+   HEADINGS & SUBHEADINGS
+   =============================== */
 h1 {
   font-family: 'Rajdhani', sans-serif;
   font-size: 2.5rem;
@@ -50,11 +75,13 @@ h1 {
   margin-top: -10px;
   margin-bottom: 20px;
   font-family: inherit;
-  font-size: .85rem;
+  font-size: .88rem;
   color: #ccc;
 }
 
-
+/* ===============================
+   BUTTON STYLES
+   =============================== */
 button {
   background-color: var(--accent);
   color: white;
@@ -73,6 +100,9 @@ button:hover {
   cursor: pointer;
 }
 
+/* ===============================
+   INPUT FIELDS
+   =============================== */
 input {
   box-sizing: border-box;
   width: 100%;
@@ -91,6 +121,9 @@ input:focus {
   box-shadow: 0 0 6px var(--accent);
 }
 
+/* ===============================
+   DROPDOWN SELECT
+   =============================== */
 select {
   width: 100%;
   margin: 0.5rem 0;
@@ -108,6 +141,9 @@ select:focus {
   box-shadow: 0 0 6px var(--accent);
 }
 
+/* ===============================
+   STATUS MESSAGE (Dynamic feedback)
+   =============================== */
 #status {
   margin-top: 1rem;
   font-size: 0.95rem;
@@ -115,7 +151,9 @@ select:focus {
   min-height: 1.5em;
 }
 
-/* Mild Particle Noise */
+/* ===============================
+   PARTICLE BACKGROUND EFFECT
+   =============================== */
 body::before {
   content: "";
   position: absolute;
@@ -130,14 +168,61 @@ body::before {
   z-index: 0;
 }
 
-/* Responsive */
+/* ===============================
+   RESPONSIVE TWEAKS (Mobile)
+   =============================== */
 @media (max-width: 500px) {
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+    line-height: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .subheading {
+    font-size: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding: 0 0.5rem;
   }
 
   input,
+  select,
   button {
     font-size: 0.95rem;
+    padding: 0.5rem;
   }
+
+  .container {
+    padding: 1rem;
+  }
+
+  #status {
+    font-size: 0.8rem;
+    padding: 0 0.5rem;
+    word-wrap: break-word;
+  }
+}
+
+/* ===============================
+   WALLET CONNECT BUTTON OVERRIDE
+   =============================== */
+.wallet-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.wallet-button-wrapper button {
+  background-color: #ff0040 !important;
+  color: white !important;
+  border-radius: 12px !important;
+  font-weight: bold !important;
+  font-family: 'Courier New', monospace !important;
+  box-shadow: 0 0 8px #ff0040 !important;
+  padding: 0.75rem 1.5rem !important;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wallet-button-wrapper button:hover {
+  background-color: #ff3366 !important;
+  box-shadow: 0 0 12px #ff3366 !important;
 }

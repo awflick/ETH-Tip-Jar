@@ -3,32 +3,19 @@
 
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ETH Tip Jar</title>
-  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <div class="container">
-    <h1>💰 ETH Tip Jar 💰</h1>
-    <p class="subheading">Send ETH or select an ERC-20 token</p>
+  <div id="root"></div>
 
-    <button id="connectButton">Connect Wallet</button>
+  <!-- ✅ Required by Vite to mount the app -->
+  <script type="module" src="/src/main.jsx"></script>
 
-    <div class="form">
-      <input id="messageInput" type="text" placeholder="Your message..." />
-      <input id="amountInput" type="number" placeholder="Amount" step="0.001" />
-
-      <select id="tokenSelect"></select>
-
-      <button id="tipButton">Send Tip</button>
-    </div>
-
-    <p id="status"></p>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
-  <script src="app.js"></script>
+  <!-- ✅ Required for <w3m-button /> to work -->
+  <script src="https://unpkg.com/@web3modal/wagmi@5/dist/web3modal.umd.js"></script>
 </body>
 
 </html>
