@@ -3,7 +3,7 @@ out/
 cache/
 
 # Dependencies
-lib/
+/lib/
 
 # Ignore all broadcast content by default
 broadcast/*

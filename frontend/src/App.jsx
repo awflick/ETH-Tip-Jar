@@ -9,6 +9,8 @@ import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react';
 import { mainnet, sepolia } from 'wagmi/chains';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { parseEther, parseUnits } from 'viem';
+import { QRCodeCanvas } from "qrcode.react";
+
 
 // TipJar contract ABI
 import { abi } from './lib/tipJarAbi';
@@ -67,6 +69,39 @@ const successMessages = [
   "Your generosity has opened a portal to Layer 2.",
   "One more sacrifice to the DeFi gods. Much appreciated."
 ];
+
+// ==============================
+// Manual Tip Component
+// ==============================
+
+const fallbackAddress = "0xE6788218F75AF067271601B03a9040B7a18cA35c";
+
+const ManualTip = ({ address }) => {
+  const shortAddress = address.slice(0, 6) + '...' + address.slice(-4);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(address);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+
+  return (
+    <div className="manual-tip">
+      <h4>Manual Tip</h4>
+      <QRCodeCanvas value={address} size={144} />
+
+      <div>
+        <button className="btn copy-address-btn" onClick={handleCopy}>
+          {copied ? 'Copied!' : 'Copy Address'}
+        </button>
+      </div>
+
+      <p className="short-address">{shortAddress}</p>
+    </div>
+  );
+};
+
 
 // ==============================
 // TipForm Component
@@ -201,17 +236,38 @@ function TipForm() {
   return (
     <div className="container">
       <h1>💰 ETH Tip Jar 💰</h1>
-      <p className="subheading">Send ETH or select an ERC-20 token</p>
+      <p className="subheading">
+        Send ETH or ERC-20 tokens
+      </p>
+
+      {/* Manual Tip Fallback (QR on top) */}
+      {!isConnected && fallbackAddress && <ManualTip address={fallbackAddress} />}
 
       {/* 🔌 Web3Modal Wallet Button */}
-      <div className="wallet-button-wrapper">
-        <w3m-button />
+      {!isConnected && (
+        <p className="subheading" style={{ marginBottom: "0.5rem" }}>
+          Or
+        </p>
+      )}
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginTop: '1rem',
+          marginBottom: '1rem'
+        }}
+      >
+        <div style={{ width: 'fit-content' }}>
+          <w3m-button />
+        </div>
       </div>
 
       {/* Wallet Status */}
-      <p id="status">
-        {isConnected ? 'Connected' : 'Not connected'}
-      </p>
+      {isConnected && (
+        <p id="status">
+          Connected
+        </p>
+      )}
 
       {/* Tip Form */}
       {isConnected && (
@@ -239,10 +295,13 @@ function TipForm() {
             ))}
           </select>
 
-          <button onClick={handleTip}>Send Tip</button>
+          <button className="btn" onClick={handleTip} style={{ marginTop: '.90rem' }}>
+            Send Tip
+          </button>
           <p id="status">{status}</p>
         </>
       )}
+
     </div>
   );
 }
