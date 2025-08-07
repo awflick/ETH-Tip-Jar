@@ -10,7 +10,6 @@ Mainnet-ready build is coming soon.
 ## Live Demo
 
 [View Live on Netlify](https://ethtipjar.netlify.app/)  
-*(Update this link after final deployment)*
 
 ---
 
