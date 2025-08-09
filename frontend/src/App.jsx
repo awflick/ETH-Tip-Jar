@@ -55,7 +55,7 @@ createWeb3Modal({
 const queryClient = new QueryClient();
 
 // Deployed TipJar contract address (on Sepolia)
-const CONTRACT_ADDRESS = '0xE6788218F75AF067271601B03a9040B7a18cA35c';
+const CONTRACT_ADDRESS = '0xf1622c71C97b449FcDF683Be2Ca6bB120106C29a';
 
 // Fun success messages after tipping
 const successMessages = [
@@ -74,7 +74,7 @@ const successMessages = [
 // Manual Tip Component
 // ==============================
 
-const fallbackAddress = "0xE6788218F75AF067271601B03a9040B7a18cA35c";
+const fallbackAddress = "0xf1622c71C97b449FcDF683Be2Ca6bB120106C29a";
 
 const ManualTip = ({ address }) => {
   const shortAddress = address.slice(0, 6) + '...' + address.slice(-4);
@@ -135,6 +135,7 @@ function TipForm() {
     }
 
     const tokenObj = token === 'ETH' ? tokenList.ETH : tokenList[token];
+
     const parsedAmount =
       token === 'ETH'
         ? parseEther(amount)

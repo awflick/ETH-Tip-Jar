@@ -20,24 +20,63 @@ export const tokenList = {
         decimals: 18,          // ETH uses 18 decimals
     },
 
-    // Chainlink Token (Sepolia)
-    '0x779877A7B0D9E8603169DdbD7836e478b4624789': {
-        symbol: 'LINK',
-        address: '0x779877A7B0D9E8603169DdbD7836e478b4624789',
-        decimals: 18,
-    },
+    // ===== Stablecoins =====
 
-    // USDC Token (Sepolia)
-    '0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238': {
+    // USDC Token (Mainnet)
+    '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48': {
         symbol: 'USDC',
-        address: '0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238',
+        address: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
         decimals: 6,
     },
 
-    // Wrapped ETH Token (Sepolia)
-    '0xdd13E55209Fd76AfE204dBda4007C227904f0a81': {
+    // DAI Token (Mainnet)
+    '0x6B175474E89094C44Da98b954EedeAC495271d0F': {
+        symbol: 'DAI',
+        address: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+        decimals: 18,
+    },
+
+    // ===== Blue Chips by Market Cap =====
+
+    // Wrapped ETH Token (Mainnet)
+    '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2': {
         symbol: 'WETH',
-        address: '0xdd13E55209Fd76AfE204dBda4007C227904f0a81',
+        address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+        decimals: 18,
+    },
+
+    // Chainlink Token (Mainnet)
+    '0x514910771AF9Ca656af840dff83E8264EcF986CA': {
+        symbol: 'LINK',
+        address: '0x514910771AF9Ca656af840dff83E8264EcF986CA',
+        decimals: 18,
+    },
+
+    // Uniswap Token (Mainnet)
+    '0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984': {
+        symbol: 'UNI',
+        address: '0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984',
+        decimals: 18,
+    },
+
+    // Polygon (MATIC) Token (ERC-20, Mainnet)
+    '0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0': {
+        symbol: 'MATIC',
+        address: '0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0',
+        decimals: 18,
+    },
+
+    // Aave Token (Mainnet)
+    '0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9': {
+        symbol: 'AAVE',
+        address: '0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9',
+        decimals: 18,
+    },
+
+    // Shiba Inu Token (Mainnet)
+    '0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE': {
+        symbol: 'SHIB',
+        address: '0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE',
         decimals: 18,
     },
 };

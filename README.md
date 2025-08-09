@@ -1,15 +1,14 @@
 # ETH Tip Jar
 
-A sleek decentralized tip jar dApp built with **Solidity, React, and Web3Modal**. Users can connect their MetaMask wallet and send **ETH or any ERC-20 token** along with a message. Styled with a bold, cyberpunk-inspired UI and designed for both desktop and mobile users.
+A sleek decentralized tip jar dApp built with **Solidity, React, and Web3Modal**. Users can connect their MetaMask wallet and send **ETH or any supported ERC-20 token** along with a message. Styled with a bold, cyberpunk-inspired UI and designed for both desktop and mobile users.
 
-Currently deployed to the **Sepolia testnet**.  
-Mainnet-ready build is coming soon.
+**Currently deployed to Ethereum Mainnet** with a separate branch for Sepolia testnet.
 
 ---
 
 ## Live Demo
 
-[View Live on Netlify](https://ethtipjar.netlify.app/)  
+[View Live on Netlify](https://ethtipjar.netlify.app/)
 
 ---
 
@@ -18,7 +17,7 @@ Mainnet-ready build is coming soon.
 - Smart Contract: Solidity (^0.8.28)
 - Frontend: React (Vite) + Wagmi + viem
 - Wallet Integration: Web3Modal v3 (WalletConnect)
-- QR Code Fallback: Manual tip via `qrcode.react`
+- QR Code Fallback: Manual tip via qrcode.react
 - Styling: Custom CSS with terminal/cyberpunk aesthetics
 - Testing/Deployment: Foundry (forge)
 - Hosting: Netlify
@@ -31,30 +30,38 @@ Mainnet-ready build is coming soon.
 - Send tips in ETH or supported ERC-20 tokens
 - Add a message with each tip
 - Token approval and allowance flow for ERC-20
-- Supports: ETH, LINK, USDC, WETH
+- Supported tokens (Mainnet): ETH, LINK, USDC, WETH, UNI, SHIB, MATIC, DAI, AAVE
+  - Note: USDT removed for launch due to high gas / approval quirks
 - Randomized success feedback per tip
 - Fully responsive UI (mobile and desktop)
 - WalletConnect QR code and mobile browser support
-- Verified smart contract (Sepolia)
+- Verified smart contract (Mainnet + Sepolia)
 
 ---
 
 ## Project Structure
 
     ETH-TipJar/
+    ├── broadcast/
+    ├── cache/
     ├── contracts/
     │   └── TipJar.sol                 # Solidity contract
     ├── frontend/
+    │   ├── dist/                      # Production build output
+    │   ├── public/                    # Static assets
+    │   ├── src/
+    │   │   ├── assets/                # Images, icons, etc.
+    │   │   ├── lib/
+    │   │   │   ├── tipJarAbi.js       # Contract ABI
+    │   │   │   └── tokenList.js       # Token metadata (mainnet addresses)
+    │   │   ├── App.jsx                # Main React component
+    │   │   ├── main.jsx               # App entry
+    │   │   └── index.css              # Global styles
     │   ├── index.html                 # Entry point
     │   ├── vite.config.js             # Vite config
-    │   ├── package.json               # Frontend dependencies
-    │   └── src/
-    │       ├── App.jsx                # Main React component
-    │       ├── main.jsx               # App entry
-    │       ├── index.css              # Global styles
-    │       └── lib/
-    │           ├── tipJarAbi.js       # Contract ABI
-    │           └── tokenList.js       # Token metadata
+    │   └── package.json               # Frontend dependencies
+    ├── lib/
+    ├── out/
     ├── script/
     │   └── Deploy.s.sol               # Foundry deploy script
     ├── test/
@@ -62,82 +69,65 @@ Mainnet-ready build is coming soon.
     ├── .env                           # Environment variables (gitignored)
     ├── foundry.toml                   # Foundry config
     ├── README.md                      # This file
+    └── remappings.txt
 
 ---
 
-## Smart Contract Deployment (Sepolia)
+## Smart Contract Deployment (Mainnet)
 
 To deploy and verify the contract using Foundry:
 
-1. Load environment variables:
+1) Load environment variables
 
-    ```bash
     export $(grep -v '^#' .env | xargs)
-    ```
 
-2. Deploy and verify:
+2) Deploy and verify
 
-    ```bash
     forge create \
       ./contracts/TipJar.sol:TipJar \
-      --rpc-url $SEPOLIA_RPC_URL \
+      --rpc-url $MAINNET_RPC_URL \
       --private-key $METAMASK_PRIVATE_KEY \
       --etherscan-api-key $ETHERSCAN_API_KEY \
       --verify \
       --broadcast
-    ```
+
+(For Sepolia, switch --rpc-url to $SEPOLIA_RPC_URL.)
 
 ---
 
 ## Local Frontend Development
 
-To run the frontend locally with Vite:
+Run the frontend locally with Vite:
 
-1. Navigate to the frontend directory:
-
-    ```bash
     cd frontend
-    ```
-
-2. Install dependencies:
-
-    ```bash
     npm install
-    ```
-
-3. Start the development server:
-
-    ```bash
     npm run dev
-    ```
 
-4. Open your browser to:
+Then open:
 
-    ```
     http://localhost:5173
-    ```
 
 ---
 
 ## Deploying the Frontend
 
 You can deploy using:
-
 - Netlify (recommended for HTTPS and mobile compatibility)
 - Vercel
 - GitHub Pages
 
-Netlify is ideal for wallet connections and QR functionality out of the box.
+Netlify is ideal for wallet connections and QR functionality out of the box. When Netlify is configured to watch the `main` branch, pushing to `main` will auto-deploy the production (mainnet) build.
 
 ---
 
 ## Environment & Security Notes
 
-- It is safe to expose your Web3Modal `projectId` in the frontend
-- Never commit your private key or `.env` file to version control
+- It is safe to expose your Web3Modal projectId in the frontend.
+- Never commit your private key or .env file to version control.
 
-Example `.env` file (not included in repo):
+Example .env file (not included in repo):
 
+    MAINNET_RPC_URL=https://mainnet.infura.io/v3/your-key
     SEPOLIA_RPC_URL=https://sepolia.infura.io/v3/your-key
     METAMASK_PRIVATE_KEY=0xabc123...
     ETHERSCAN_API_KEY=your-etherscan-key
@@ -159,20 +149,22 @@ Example `.env` file (not included in repo):
 - Uses Wagmi to detect connection state
 - Shows QR code + copy address fallback when not connected
 - Once connected, shows tip form (message, amount, token)
-- Automatically handles token approval and allowance
+- Automatically handles token approval and allowance (ERC-20)
 - Shows success or error status below the Send Tip button
 
 ---
 
 ## Completed Milestones
 
-- [x] Smart contract deployed and verified
+- [x] Smart contract deployed and verified (Mainnet + Sepolia)
 - [x] ETH and ERC-20 token support
 - [x] WalletConnect v2 QR support
 - [x] Fully responsive frontend (mobile and desktop)
 - [x] Token approval and allowance flow
 - [x] Web3Modal v3 integration
 - [x] Cyberpunk UI completed
+- [x] Mobile + Coinbase Wallet tested
+- [x] Mainnet addresses wired in tokenList.js
 
 ---
 
@@ -180,8 +172,7 @@ Example `.env` file (not included in repo):
 
 - [ ] Add recent tip history (UI or backend)
 - [ ] ENS address resolution (optional)
-- [ ] Launch to Ethereum Mainnet
-- [ ] Add a stats view for total tips per token
+- [ ] Add stats view for total tips per token
 - [ ] Light/dark mode toggle
 
 ---
