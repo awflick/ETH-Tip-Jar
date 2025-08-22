@@ -12,6 +12,15 @@ A sleek decentralized tip jar dApp built with **Solidity, React, and Web3Modal**
 
 ---
 
+## Deployments
+
+| Network         | Address | Details |
+|-----------------|---------|---------|
+| **Mainnet**     | [0xf1622c…6C29a](https://etherscan.io/address/0xf1622c71C97b449FcDF683Be2Ca6bB120106C29a) | Verified on Etherscan |
+| **Sepolia Testnet** | [0xE6788…ca35c](https://sepolia.etherscan.io/address/0xE6788218F75AF067271601B03a9040B7a18cA35c) | Verified on Etherscan |
+
+---
+
 ## Tech Stack
 
 - Smart Contract: Solidity (^0.8.28)
