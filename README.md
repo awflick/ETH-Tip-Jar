@@ -177,6 +177,16 @@ Example .env file (not included in repo):
 
 ---
 
+## Screenshots
+
+### Connected Wallet View
+![Connected Wallet Screenshot](frontend/src/assets/Connected.png)
+
+### Fallback / QR Code View
+![Fallback / QR Code Screenshot](frontend/src/assets/Fallback.png)
+
+---
+
 ## License
 
 MIT — free to fork, remix, and build upon.
